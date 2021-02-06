@@ -1,8 +1,10 @@
-package io.thavelka.githubbasic;
+package io.thavelka.githubbasic.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import io.thavelka.githubbasic.R;
 
 public class MainActivity extends AppCompatActivity {
 
