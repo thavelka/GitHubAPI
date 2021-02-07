@@ -23,3 +23,8 @@ Swipe to refresh to retrieve new commits. Tap on a commit to view it in detail i
 * RecyclerViews
 * Dependency injection
 * Light/Dark mode support
+
+### Screenshots
+![Light Mode](https://i.imgur.com/i9nRD84.png)
+![Dark Mode](https://i.imgur.com/jpzTFNJ.png)
+![Error handling](https://i.imgur.com/RtOCZjv.png)
