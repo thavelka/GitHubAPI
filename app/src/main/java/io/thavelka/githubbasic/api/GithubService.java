@@ -7,6 +7,6 @@ import io.thavelka.githubbasic.models.Commit;
 import retrofit2.http.GET;
 
 public interface GithubService {
-    @GET("users/thavelka/Spambot/commits")
+    @GET("repos/thavelka/Spambot/commits")
     Observable<List<Commit>> getCommits();
 }
