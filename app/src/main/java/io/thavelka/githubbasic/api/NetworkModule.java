@@ -2,6 +2,8 @@ package io.thavelka.githubbasic.api;
 
 import com.google.gson.Gson;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -28,6 +30,7 @@ public class NetworkModule {
     }
 
     @Provides
+    @Singleton
     GithubService getGithubService(Retrofit retrofit) {
         return retrofit.create(GithubService.class);
     }
