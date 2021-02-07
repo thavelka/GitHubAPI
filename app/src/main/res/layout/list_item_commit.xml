@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="@string/commit_item_name_placeholder"
+            android:text="@string/commit_item_name_empty"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/list_item_commit_text_author_name"
-            android:text="@string/commit_item_email_placeholder"
+            android:text="@string/commit_item_email_empty"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         <TextView
@@ -33,15 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_commit_text_author_name"
-            android:text="@string/commit_item_message_placeholder"
+            android:text="@string/commit_item_message_empty"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
-            android:id="@+id/list_item_commit_hash"
+            android:id="@+id/list_item_commit_text_hash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_commit_text_message"
-            android:text="@string/commit_item_hash_placeholder"
+            android:text="@string/commit_item_hash_empty"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
