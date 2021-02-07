@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.thavelka.githubbasic.R;
+import io.thavelka.githubbasic.api.DaggerNetworkComponent;
 import io.thavelka.githubbasic.api.GithubService;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CommitsFragment extends Fragment {
 
     private static final String TAG = "CommitsFragment";
+    private GithubService service;
 
     public CommitsFragment() {
         // Required empty public constructor
@@ -33,13 +35,7 @@ public class CommitsFragment extends Fragment {
         Log.d(TAG, "onCreateView: Inflating fragment view");
         View view = inflater.inflate(R.layout.fragment_commits, container, false);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                .baseUrl("https://api.github.com/")
-                .build();
-
-        GithubService service = retrofit.create(GithubService.class);
+        service = DaggerNetworkComponent.create().getGithubService();
         service.getCommits()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
