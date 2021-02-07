@@ -7,4 +7,6 @@
     <string name="commit_item_message_empty">Commit message unavailable</string>
     <string name="commit_item_hash_empty">Commit SHA unavailable</string>
     <string name="commits_empty_text">No commits to show</string>
+    <string name="commits_loading_error">Error loading commits</string>
+    <string name="action_retry">Retry</string>
 </resources>

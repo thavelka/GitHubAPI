@@ -30,7 +30,6 @@ public class NetworkModule {
     }
 
     @Provides
-    @Singleton
     GithubService getGithubService(Retrofit retrofit) {
         return retrofit.create(GithubService.class);
     }
