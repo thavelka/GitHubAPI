@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GithubBasic</string>
+
+    <!--CommitsFragment Strings-->
+    <string name="commit_item_name_placeholder">Tim Havelka</string>
+    <string name="commit_item_email_placeholder"><![CDATA[<tim.havelka@gmail.com>]]></string>
+    <string name="commit_item_message_placeholder">Added thumbnails to file picker</string>
+    <string name="commit_item_hash_placeholder">7fc3ac</string>
+    <string name="commits_empty_text">No commits to show</string>
 </resources>
