@@ -56,6 +56,7 @@ public class CommitsFragment extends Fragment {
         // Configure views
         adapter = new CommitsRecyclerViewAdapter(getActivity(), null);
         recyclerView.setAdapter(adapter);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.teal_200));
         swipeRefreshLayout.setOnRefreshListener(() -> {
             // Loading already in progress
             if (disposable != null && !disposable.isDisposed()) {
@@ -103,7 +104,9 @@ public class CommitsFragment extends Fragment {
                 }, throwable -> {
                     Log.e(TAG, "Failed to retrieve commits", throwable);
                     Snackbar.make(getView(), R.string.commits_loading_error, Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.action_retry, v -> refreshCommits()).show();
+                            .setAction(R.string.action_retry, v -> refreshCommits())
+                            .setActionTextColor(getResources().getColor(R.color.teal_200))
+                            .show();
                 });
     }
 }
