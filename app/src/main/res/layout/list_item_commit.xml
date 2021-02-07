@@ -3,11 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp">
+    android:layout_marginBottom="2dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <TextView
             android:id="@+id/list_item_commit_text_author_name"
@@ -15,7 +20,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/commit_item_name_empty"
+            android:textSize="16sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
@@ -25,7 +33,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/list_item_commit_text_author_name"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="@string/commit_item_email_empty"
+            android:textSize="16sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         <TextView
@@ -34,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_commit_text_author_name"
             android:text="@string/commit_item_message_empty"
+            android:textSize="16sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
@@ -41,6 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_commit_text_message"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="@string/commit_item_hash_empty"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>
