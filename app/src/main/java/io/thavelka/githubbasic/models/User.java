@@ -1,7 +1,7 @@
 package io.thavelka.githubbasic.models;
 
 public class User {
-    String name;
-    String email;
-    String date;
+    public String name;
+    public String email;
+    public String date;
 }
