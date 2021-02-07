@@ -21,14 +21,16 @@ import io.thavelka.githubbasic.models.CommitDetails;
 import io.thavelka.githubbasic.models.User;
 
 public class CommitsRecyclerViewAdapter extends RecyclerView.Adapter<CommitsRecyclerViewAdapter.CommitViewHolder> {
-    private LayoutInflater inflater;
-    private List<Commit> commits = new ArrayList<>();
+    private final LayoutInflater inflater;
+    private final List<Commit> commits = new ArrayList<>();
+    private OnItemClickListener listener;
 
-    public CommitsRecyclerViewAdapter(@NonNull Context context, @Nullable Collection<Commit> commits) {
+    public CommitsRecyclerViewAdapter(@NonNull Context context, @Nullable Collection<Commit> commits, @Nullable OnItemClickListener listener) {
         inflater = LayoutInflater.from(context);
         if (commits != null) {
             this.commits.addAll(commits);
         }
+        this.listener = listener;
     }
 
     @NonNull
@@ -41,7 +43,13 @@ public class CommitsRecyclerViewAdapter extends RecyclerView.Adapter<CommitsRecy
     @Override
     public void onBindViewHolder(@NonNull CommitViewHolder holder, int position) {
         if (position >= 0 && position < getItemCount()) {
+            Commit commit = commits.get(position);
             holder.bind(commits.get(position));
+            holder.itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onItemClick(commit);
+                }
+            });
         }
     }
 
@@ -50,10 +58,18 @@ public class CommitsRecyclerViewAdapter extends RecyclerView.Adapter<CommitsRecy
         return commits != null ? commits.size() : 0;
     }
 
+    /**
+     * Replaces commits in list and updates view.
+     * @param commits Commits to be shown.
+     */
     public void setCommits(Collection<Commit> commits) {
         this.commits.clear();
         this.commits.addAll(commits);
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(@Nullable OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     static class CommitViewHolder extends RecyclerView.ViewHolder {
@@ -119,5 +135,9 @@ public class CommitsRecyclerViewAdapter extends RecyclerView.Adapter<CommitsRecy
             messageText.setText(message);
             hashText.setText(hash);
         }
+    }
+
+    interface OnItemClickListener {
+        void onItemClick(Commit commit);
     }
 }

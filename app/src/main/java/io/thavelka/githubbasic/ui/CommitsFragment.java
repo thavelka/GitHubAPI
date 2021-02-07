@@ -1,6 +1,9 @@
 package io.thavelka.githubbasic.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 import io.thavelka.githubbasic.R;
 import io.thavelka.githubbasic.api.DaggerNetworkComponent;
 import io.thavelka.githubbasic.api.GithubService;
+import io.thavelka.githubbasic.models.Commit;
 
 public class CommitsFragment extends Fragment {
 
@@ -54,7 +58,7 @@ public class CommitsFragment extends Fragment {
         emptyText = view.findViewById(R.id.commits_text_empty);
 
         // Configure views
-        adapter = new CommitsRecyclerViewAdapter(getActivity(), null);
+        adapter = new CommitsRecyclerViewAdapter(getActivity(), null, this::onItemClick);
         recyclerView.setAdapter(adapter);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.teal_200));
         swipeRefreshLayout.setOnRefreshListener(() -> {
@@ -108,5 +112,16 @@ public class CommitsFragment extends Fragment {
                             .setActionTextColor(getResources().getColor(R.color.teal_200))
                             .show();
                 });
+    }
+
+    /**
+     * Launches commit details in browser or GitHub app
+     */
+    private void onItemClick(Commit commit) {
+        if (TextUtils.isEmpty(commit.url)) return;
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(commit.url));
+        if (browserIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(browserIntent);
+        }
     }
 }
