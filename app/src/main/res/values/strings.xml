@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GithubBasic</string>
+    <string name="app_name">thavelka/GitHubAPI</string>
 
     <!--CommitsFragment Strings-->
     <string name="commit_item_name_empty">Name unavailable</string>

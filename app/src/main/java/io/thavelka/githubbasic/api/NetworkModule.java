@@ -2,8 +2,6 @@ package io.thavelka.githubbasic.api;
 
 import com.google.gson.Gson;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -13,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
-    public static final String BASE_URL = "https://api.github.com/";
+    public static final String BASE_URL = "https://api.github.com/repos/thavelka/GitHubAPI/";
 
     @Provides
     Gson getGson() {
